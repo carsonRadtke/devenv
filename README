@@ -1,0 +1,19 @@
+This is the Docker container I use for development. It comes preloaded with APT packages that I use as well as a variety of configurations that I like my environemnt to have.
+
+To build the container:
+
+```shell
+$ docker build -t devenv                      \
+               --build-arg USERNAME=$(whoami) \
+               --build-arg UID=$(id -u)       \
+               --build-arg GID=$(id -g) .
+```
+
+-- or --
+
+```
+$ ./build_container.sh
+```
+
+Note: There is a hardcoded value in `enter_container.sh` (the `-v` option).
+Modify it to your liking; same with the packages in `Dockerfile`. 
