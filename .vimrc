@@ -15,13 +15,9 @@ set number
 
 set nowrap 
 
-nmap <buffer> gd <plug>(lsp-definition)
-
 call plug#begin()
-
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
 call plug#end()
 
 function! s:on_lsp_buffer_enabled() abort
