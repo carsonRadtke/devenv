@@ -1,23 +1,31 @@
-syntax enable
- filetype plugin indent on
+colorscheme default 
+syntax on
 
- syntax on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
 
- set cursorline
- set cursorcolumn
- set tabstop=2
- set shiftwidth=2
- set expandtab
- set nobackup
- set incsearch
- set number relativenumber
- set autoindent
- set showmode
- set ruler
- set textwidth=79
- set ttyfast
- set showmode
- set showcmd
+filetype indent on
+set ai
+set si
 
- highlight CursorLine cterm=NONE term=reverse ctermbg=242 guibg=Grey40
- 
+set relativenumber
+set number
+
+set nowrap 
+
+nmap <buffer> gd <plug>(lsp-definition)
+
+call plug#begin()
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+call plug#end()
+
+function! s:on_lsp_buffer_enabled() abort
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> g[ <plug>(lsp-previous-diagnostic)
+    nmap <buffer> g] <plug>(lsp-next-diagnostic)
+endfunction
