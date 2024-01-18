@@ -17,6 +17,8 @@ RUN apt-get install -y clangd cmake gdb git make psmisc strace tmux wget vim
 
 COPY .vimrc /home/$USERNAME/.vimrc
 COPY .tmux.conf /home/$USERNAME/.tmux.conf
+COPY .gitconfig /home/$USERNAME/.gitconfig
+COPY .gitcommitmsg /home/$USERNAME/.gitcommitmsg
 
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

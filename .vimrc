@@ -13,15 +13,22 @@ set si
 set relativenumber
 set number
 
-set nowrap 
+set nowrap
+
+set backspace=indent,eol,start
+
+set colorcolumn=80
 
 call plug#begin()
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
+    Plug 'vim-airline/vim-airline'
 call plug#end()
 
-function! s:on_lsp_buffer_enabled() abort
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> g[ <plug>(lsp-previous-diagnostic)
-    nmap <buffer> g] <plug>(lsp-next-diagnostic)
-endfunction
+nmap <buffer> gd <plug>(lsp-definition)
+nmap <buffer> g[ <plug>(lsp-previous-diagnostic)
+nmap <buffer> g] <plug>(lsp-next-diagnostic)
+
+nmap <buffer> gn :bnext<cr>
+nmap <buffer> gb :bprevious<cr>
+
