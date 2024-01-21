@@ -1,11 +1,4 @@
-[wip] my development environment
+A collection of configuration files that improve my productivity.
 
-getting started:
-```shell
-$ ./build_container.sh
-```
+Also a Dockerfile to pull everything together.
 
-once the container has been build, start the session with:
-```shell
-$ ./enter_container.sh $HOME/code:/code /tmp:/tmp
-```
