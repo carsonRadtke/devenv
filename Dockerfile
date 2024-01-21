@@ -15,6 +15,7 @@ RUN apt update && apt upgrade -y
 RUN yes | unminimize
 RUN apt-get install -y clangd cmake gdb git make psmisc strace tmux wget vim
 
+COPY .bashrc /home/$USERNAME/.bashrc
 COPY .vimrc /home/$USERNAME/.vimrc
 COPY .tmux.conf /home/$USERNAME/.tmux.conf
 COPY .gitconfig /home/$USERNAME/.gitconfig
