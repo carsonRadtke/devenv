@@ -8,4 +8,6 @@
     find = grep -n --full-name
 [commit]
     template = ~/.gitcommitmsg
+[init]
+    defaultBranch = main
 
