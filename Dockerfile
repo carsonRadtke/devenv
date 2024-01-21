@@ -25,6 +25,7 @@ RUN apt-get install -y clangd cmake curl gcc gdb git make psmisc strace tmux wge
 RUN touch /home/$USERNAME/.hushlogin
 
 COPY .bashrc /home/$USERNAME/.bashrc
+COPY .inputrc /home/$USERNAME/.inputrc
 COPY .vimrc /home/$USERNAME/.vimrc
 COPY .tmux.conf /home/$USERNAME/.tmux.conf
 COPY .gitconfig /home/$USERNAME/.gitconfig
