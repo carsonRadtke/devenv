@@ -6,6 +6,8 @@ FROM ubuntu
 #   --build-arg GID=$(id -g)        \
 #   .
 
+# docker run --rm -it -v ~/code:/code devenv-ubuntu devenv-ubuntu
+
 ARG USERNAME
 ARG GID
 ARG UID
