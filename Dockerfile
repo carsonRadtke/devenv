@@ -21,7 +21,8 @@ RUN passwd -d $USERNAME
 
 RUN apt update && apt upgrade -y  
 RUN yes | unminimize
-RUN apt-get install -y clangd cmake curl gcc gdb git make psmisc strace tmux wget vim
+RUN apt install -y clang clangd cmake curl fzf gcc gdb git htop make psmisc   \
+                   strace tmux wget vim
 RUN touch /home/$USERNAME/.hushlogin
 
 COPY .bashrc /home/$USERNAME/.bashrc
