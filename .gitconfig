@@ -2,7 +2,7 @@
     email = nosrac925@gmail.com
     name = carson radtke
 [credential]
-    username = <redacted>
+    username = carsonRadtke
     helper = store
 [alias]
     find = grep -n --full-name
