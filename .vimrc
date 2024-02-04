@@ -12,6 +12,7 @@ set si
 
 set relativenumber
 set number
+set cursorline
 
 set nowrap
 
