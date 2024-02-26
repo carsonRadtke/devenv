@@ -1,10 +1,10 @@
 #!/bin/sh
 
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 set -o vi
 
-export PS1="\u@\h:\w \\$ "
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH=$PATH:~/bin
+export PS1="\u@\h:\W \\$ "
 export VISUAL=vim
 export EDITOR=$VISUAL
 
