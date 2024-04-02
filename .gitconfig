@@ -10,4 +10,5 @@
     template = ~/.gitcommitmsg
 [init]
     defaultBranch = main
-
+[gpg]
+    format = ssh
