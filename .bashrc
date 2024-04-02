@@ -10,3 +10,8 @@ export EDITOR=$VISUAL
 
 alias blyat='git commit -a --amend --no-edit && git push --force'
 alias patch='git diff > /tmp/p.patch && vim /tmp/p.patch'
+
+bashrc_extra=$HOME/.bashrc.extra
+if [ -f $bashrc_extra ]; then
+    source $bashrc_extra
+fi
