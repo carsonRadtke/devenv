@@ -8,7 +8,7 @@
     find = grep -n --full-name
 [commit]
     template = ~/.gitcommitmsg
-    gpgsign = true
+    gpgSign = true
 [init]
     defaultBranch = main
 [gpg]
