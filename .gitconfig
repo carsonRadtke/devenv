@@ -1,6 +1,7 @@
 [user]
     email = nosrac925@gmail.com
     name = carson radtke
+    signingkey = ~/.ssh/id_rsa_signing
 [credential]
     username = carsonRadtke
     helper = store
