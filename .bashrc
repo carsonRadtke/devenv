@@ -7,6 +7,7 @@ export PATH=$PATH:~/bin
 export PS1="\u@\h:\W \\$ "
 export VISUAL=vim
 export EDITOR=$VISUAL
+export TRUNK=main
 
 alias blyat='git commit -a --amend --no-edit && git push --force'
 alias patch='git diff > /tmp/p.patch && vim /tmp/p.patch'
