@@ -12,6 +12,11 @@ ARG USERNAME
 ARG GID
 ARG UID
 
+RUN apt update && apt upgrade -y  
+RUN yes | unminimize
+RUN apt install -y adduser clang clangd cmake curl fzf gcc gdb git htop make psmisc   \
+                   strace tmux wget vim
+
 RUN adduser --gid $GID              \
             --home /home/$USERNAME  \
             --uid $UID              \
@@ -19,20 +24,13 @@ RUN adduser --gid $GID              \
 RUN usermod -aG sudo $USERNAME
 RUN passwd -d $USERNAME
 
-RUN apt update && apt upgrade -y  
-RUN yes | unminimize
-RUN apt install -y clang clangd cmake curl fzf gcc gdb git htop make psmisc   \
-                   strace tmux wget vim
 RUN touch /home/$USERNAME/.hushlogin
-
-COPY .bashrc /home/$USERNAME/.bashrc
-COPY .inputrc /home/$USERNAME/.inputrc
-COPY .vimrc /home/$USERNAME/.vimrc
-COPY .tmux.conf /home/$USERNAME/.tmux.conf
-COPY .gitconfig /home/$USERNAME/.gitconfig
-COPY .gitcommitmsg /home/$USERNAME/.gitcommitmsg
 
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 USER $USERNAME
+
+RUN git clone https://github.com/carsonRadtke/devenv ~/devenv
+RUN ~/devenv/copy_config.sh
+RUN rm -rf ~/devenv

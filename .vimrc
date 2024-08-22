@@ -24,6 +24,7 @@ call plug#begin()
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
     Plug 'vim-airline/vim-airline'
+    Plug 'junegunn/fzf'
 call plug#end()
 
 nmap <buffer> gd <plug>(lsp-definition)
@@ -32,4 +33,7 @@ nmap <buffer> g] <plug>(lsp-next-diagnostic)
 
 nmap <buffer> gn :bnext<cr>
 nmap <buffer> gb :bprevious<cr>
+
+nmap gf :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'right': '50%'})<cr>
+nmap gb :call fzf#run({'source': map(copy(getbufinfo()), 'v:val.name'), 'sink': 'e', 'right': '50%'})<cr>
 
