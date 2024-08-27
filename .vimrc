@@ -24,7 +24,9 @@ call plug#begin()
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
     Plug 'vim-airline/vim-airline'
-    Plug 'junegunn/fzf'
+    Plug 'tpope/vim-fugitive'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim' 
 call plug#end()
 
 nmap <buffer> gd <plug>(lsp-definition)
