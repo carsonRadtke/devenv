@@ -35,6 +35,7 @@ nmap <buffer> g] <plug>(lsp-next-diagnostic)
 
 nmap <buffer> gn :bnext<cr>
 nmap <buffer> gb :bprevious<cr>
+nmap <buffer> gp :Ag<cr>
 
 nmap gf :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'right': '50%'})<cr>
 nmap gb :call fzf#run({'source': map(copy(getbufinfo()), 'v:val.name'), 'sink': 'e', 'right': '50%'})<cr>
