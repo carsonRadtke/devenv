@@ -6,6 +6,7 @@ cp .bashrc ~
 cp .clang-format ~
 cp .gitcommitmsg ~
 cp .gitconfig ~
+cp .gitignore ~
 cp .inputrc ~
 cp .tmux.conf ~
 cp .vimrc ~
