@@ -9,10 +9,18 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 export TRUNK=main
 
-alias blyat='git commit -a --amend --no-edit && git push --force'
-alias patch='git diff > /tmp/p.patch && vim /tmp/p.patch'
+uname_out=$(uname -s)
+case "${uname_out}" in
+    Linux*)  brewpath=~/.linuxbrew;;
+    Darwin*) brewpath=/opt/homebrew;;
+    *)       brewpath=/unknown;;
+esac
+
+eval "$($brewpath/bin/brew shellenv)"
+unset uname_out
 
 bashrc_extra=$HOME/.bashrc.extra
 if [ -f $bashrc_extra ]; then
     source $bashrc_extra
 fi
+unset bashrc_extra
