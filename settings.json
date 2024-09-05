@@ -1,0 +1,15 @@
+{
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "Tomorrow Night",
+    "editor.rulers": [
+        {
+            "color": "#f00",
+            "column": 88
+        }
+    ],
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+}
+
+// extensions:
+//  - vscodevim.vim
