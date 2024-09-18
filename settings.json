@@ -1,6 +1,7 @@
 {
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
+    "editor.lineNumbers": "relative",
     "editor.rulers": [
         {
             "color": "#f00",
