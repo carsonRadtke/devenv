@@ -3,13 +3,13 @@
     name = carson radtke
     signingkey = ~/.ssh/id_rsa_signing
 [credential]
-    username = carsonRadtke
     helper = store
+    username = carsonRadtke
 [alias]
+    changes = !git diff $(git merge-base HEAD \"$TRUNK\")
     find = grep -n --full-name
     files = !git diff --name-only $(git merge-base HEAD \"$TRUNK\")
     stat = !git diff --stat $(git merge-base HEAD \"$TRUNK\")
-    changes = !git diff $(git merge-base HEAD \"$TRUNK\")
 [commit]
     template = ~/.gitcommitmsg
     gpgSign = true
@@ -22,4 +22,8 @@
 [push]
     autoSetupRemote = true
 [core]
+	autocrlf = true
     excludesFile = ~/.gitignore
+	longpaths = true
+	protectNTFS = false
+	whitespace = cr-at-eol
