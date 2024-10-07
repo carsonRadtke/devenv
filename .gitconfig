@@ -27,3 +27,4 @@
 	longpaths = true
 	protectNTFS = false
 	whitespace = cr-at-eol
+    editor "nvim"
