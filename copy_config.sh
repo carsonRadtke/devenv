@@ -11,3 +11,7 @@ cp .inputrc ~
 cp .tmux.conf ~
 cp .vimrc ~
 
+mkdir -p ~/.config/nvim
+cp init.lua ~/.config/nvim
+cp colors.vim ~/.config/nvim
+
