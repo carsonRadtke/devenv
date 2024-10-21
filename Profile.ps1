@@ -1,3 +1,3 @@
 Set-PSReadlineOption -EditMode vi
 
-Remove-Alias -Name find -Force
+Remove-Alias -Name diff -Force
