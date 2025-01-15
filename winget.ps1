@@ -4,6 +4,7 @@ winget install GitHub.cli
 winget install Kitware.CMake
 winget install mbuilov.sed
 winget install Neovim.Neovim
+winget install junegunn.fzf
 
 winget install GnuWin32.DiffUtils
 winget install GnuWin32.FindUtils
