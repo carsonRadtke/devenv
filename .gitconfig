@@ -22,9 +22,7 @@
 [push]
     autoSetupRemote = true
 [core]
-    autocrlf = true
     excludesFile = ~/.gitignore
     longpaths = true
     protectNTFS = false
-    whitespace = cr-at-eol
     editor = nvim
