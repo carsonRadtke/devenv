@@ -1,32 +1,28 @@
-local vim = vim
-local Plug = vim.fn['plug#']
-
+-- Better line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.wrap = false
+
+-- Better indentation
 vim.opt.expandtab = true
-vim.opt.cursorline = true
-vim.opt.showmatch = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.smarttab = true
-vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
-vim.call('plug#begin')
+-- Show invisible characters
+vim.opt.list = true
+vim.opt.listchars = { tab = '→ ', trail = '·', nbsp = '␣' }
 
-Plug('junegunn/fzf', { ['do'] = function()
-        vim.fn['fzf#install']()
-end })
-Plug('junegunn/fzf.vim')
-Plug('neovim/nvim-lspconfig')
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-Plug('tpope/vim-fugitive')
-Plug('vim-airline/vim-airline')
+-- Persistent undo
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.local/share/nvim/undo"
 
-vim.call('plug#end')
+-- Enable mouse support
+vim.opt.mouse = "a"
 
-require'lspconfig'.clangd.setup{
-        cmd = { 'clangd', '-j4', '--header-insertion=never' }
-}
+-- Better backspace behavior
+vim.opt.backspace = { "indent", "eol", "start" }
 
-vim.cmd('source ~/.config/nvim/colors.vim')
+-- Auto-reload files changed outside vim
+vim.opt.autoread = true
+
