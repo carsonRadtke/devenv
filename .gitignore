@@ -1,8 +1,0 @@
-# cache file for fzf
-.cache/
-
-# temp file creatd by vim
-*.swp
-
-# compilation database for clangd
-compile_commands.json

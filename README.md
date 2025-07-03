@@ -1,4 +1,1 @@
-A collection of configuration files that improve my productivity.
-
-Also a Dockerfile to pull everything together.
-
+A collection of configuration files so setting up new machines is easier.
