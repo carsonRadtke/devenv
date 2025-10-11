@@ -20,6 +20,9 @@ vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.local/share/nvim/undo"
 
+-- Line wrap --
+vim.opt.wrap = false
+
 -- Enable mouse support
 vim.opt.mouse = "a"
 
