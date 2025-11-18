@@ -14,5 +14,5 @@ git clone https://github.com/nvim-lua/plenary.nvim ~/.config/nvim/pack/nvim/star
 Installing neovim package dependencies:
 
 ```bash
-sudo apt install ripgrep find-fd
+sudo apt install bat fd-find ripgrep
 ```
