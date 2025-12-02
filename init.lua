@@ -32,33 +32,42 @@ vim.opt.backspace = { "indent", "eol", "start" }
 -- Auto-reload files changed outside vim
 vim.opt.autoread = true
 
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
 -- Global keybindings
-keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+local keymap = vim.api.nvim_set_keymap
 
--- Buffer-local keybindings in on_attach function
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-end
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, {})
 
-local lspconfig = require('lspconfig')
-
-lspconfig.clangd.setup{
-  on_attach = on_attach
+-- clangd configuration
+vim.lsp.config.clangd = {
+  cmd = {
+    "clangd",
+    "--background-index",
+    "-j=6",
+    "--log=verbose",
+  },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+  root_markers = { 'compile_commands.json', '.clangd', '.git' },
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
 }
+
+-- Enable LSPs
+vim.lsp.enable('clangd') -- C/C++
+vim.lsp.enable('ty') -- Python
+
+-- Basic LSP keymaps
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client.name == 'clangd' then
+      local opts = { buffer = args.buf }
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    end
+  end,
+})
 
 -- Basic Telescope keymaps
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
