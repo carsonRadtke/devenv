@@ -66,8 +66,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Basic Telescope keymaps
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+local status_ok, builtin = pcall(require, 'telescope.builtin')
+if status_ok then
+  vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+  vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+  vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+end
 
