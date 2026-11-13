@@ -50,10 +50,17 @@ vim.lsp.config.clangd = {
   capabilities = vim.lsp.protocol.make_client_capabilities(),
 }
 
+-- typescript (native) configuration
+vim.lsp.config('tsc-lsp', {
+  cmd = { 'tsc', '--lsp', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
+})
+
 -- Enable LSPs
 vim.lsp.enable('clangd') -- C/C++
 vim.lsp.enable('ty') -- Python
-
+vim.lsp.enable('tsc-lsp') -- TypeScript (native)
 -- Basic LSP keymaps
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
