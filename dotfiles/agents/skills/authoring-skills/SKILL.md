@@ -131,13 +131,23 @@ Follow these rules:
   hyphens.
 - Write a concrete `description`
   that states both what the skill does and when to use it.
-  Include realistic trigger terms the user is likely to say.
+  The description is routing metadata, not documentation.
+  Include realistic trigger terms the user is likely to say,
+  and add a short "Do not use for..." clause
+  when a nearby task could be mistaken for this skill.
+- Check the descriptions of existing skills in the same location
+  and resolve trigger overlap before finalizing.
 - Quote YAML values that contain colons or other potentially ambiguous punctuation.
 - Keep the description at or below 1024 characters.
 - Keep `SKILL.md` focused and below 500 lines.
 - Put detailed domain knowledge in `references/`,
   deterministic automation in `scripts/`,
   and reusable starter content in `assets/`.
+- Use progressive disclosure:
+  keep `SKILL.md` to the workflow and decision points,
+  and link to a reference only from the step that needs it.
+- Move fragile, repetitive, or exact mechanics into scripts with clear errors;
+  leave contextual judgment to the instructions.
 - Link resources from `SKILL.md` with relative paths such as
   `./references/validation.md`.
 - Keep referenced resources one level below `SKILL.md` when practical.
@@ -176,8 +186,28 @@ Include:
 
 Prefer explicit, testable instructions over vague advice.
 Avoid redundant prose and generic reminders that do not change execution.
+When improving an existing skill,
+remove stale, redundant, or contradictory rules rather than only appending new ones.
 
-### 7. Validate the Result
+### 7. Evaluate Triggering and Behavior
+
+Before reporting completion, write a small evaluation set:
+
+1. At least three realistic prompts that should trigger the skill.
+2. At least two near-miss prompts that should not trigger it,
+   including any that would match an overlapping skill.
+3. At least one prompt exercising a failure or edge case the skill handles.
+
+For each prompt, judge from the description alone whether the skill would load,
+and from the body whether the workflow would produce the expected outcome.
+Revise the description or body for every mismatch.
+When feasible, run one representative prompt with the skill loaded
+and compare the result against the same task without it.
+
+Report the evaluation set and its results in the completion response.
+Save it as a file only when the user asks.
+
+### 8. Validate the Result
 
 Before reporting completion:
 
@@ -199,7 +229,8 @@ Report:
 1. The skill location and files created or changed.
 2. The main behavior and trigger choices.
 3. Any assumptions made for non-critical details.
-4. The validation performed and its outcome.
+4. The evaluation set and its results.
+5. The validation performed and its outcome.
 
 Do not force a review loop after successful creation.
 Invite the user to request a revision
